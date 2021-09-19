@@ -4,8 +4,10 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .models import TechBlogs, Customer
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
+from django.http import HttpResponse
+
 
 stripe.api_key = 'sk_test_51Ja1P3BUeFQdhI0D2vEozHcwjrlbqTziXmNLOMgVbKg0TceF8BoeHlYnPIhMYU8NNFQzeiE2AD7m7MIgda4LlW4v00ZBXLgrR4'
 
@@ -128,6 +130,24 @@ def settings(request):
             membership = False
 
     return render(request, 'registration/settings.html', {'membership':membership, 'cancel_at_period_end':cancel_at_period_end})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def updateaccounts(request):
+    customers = Customer.objects.all()
+    for customer in customers:
+        subscription = stripe.Subscription.retrieve(customer.stripe_subscription_id)
+        if subscription.status != 'active':
+            customer.membership = False
+        else:
+            customer.membership = True
+        
+        customer.cancel_at_period_end = subscription.cancel_at_period_end
+        customer.save()
+        
+        return HttpResponse('completed')
+
+
 
 class SignUp(generic.CreateView):
     form_class = CustomSignupForm

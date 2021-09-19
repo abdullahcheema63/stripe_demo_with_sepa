@@ -26,6 +26,6 @@ urlpatterns = [
     path('join', views.join, name='join'),
     path('checkout', views.checkout, name='checkout'),
     path('auth/settings', views.settings, name='settings'),
-    # path('updateaccounts', views.updateaccounts, name='updateaccounts'),
+    path('updateaccounts', views.updateaccounts, name='updateaccounts'),
 
 ]
