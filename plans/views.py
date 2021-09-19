@@ -144,7 +144,7 @@ def updateaccounts(request):
         
         customer.cancel_at_period_end = subscription.cancel_at_period_end
         customer.save()
-        
+
         return HttpResponse('completed')
 
 
