@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/signup', views.SignUp.as_view(), name='signup'),
     path('join', views.join, name='join'),
     path('checkout', views.checkout, name='checkout'),
+    path('checkout_sepa', views.checkout_sepa, name='checkout_sepa'),
     path('auth/settings', views.settings, name='settings'),
     path('updateaccounts', views.updateaccounts, name='updateaccounts'),
 

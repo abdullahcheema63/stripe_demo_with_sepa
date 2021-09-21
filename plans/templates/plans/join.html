@@ -20,7 +20,9 @@
           <li>Scientific Studies Breakdown</li>
           <li>Weekly Members Only Email</li>
         </ul>
-        <a href="{% url 'checkout'%}?plan=basic"><button type="button" class="btn btn-lg btn-block btn-primary">Get started</button></a>
+        <a href="{% url 'checkout'%}?plan=basic"><button type="button" class="btn btn-lg btn-block btn-primary">Pay with Visa/ Mastercard</button></a><br>
+        <a href="{% url 'checkout_sepa'%}?plan=basic"><button type="button" class="btn btn-lg btn-block btn-secondary">Pay with SEPA</button></a>
+
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -35,7 +37,8 @@
           <li>Scientific Studies Breakdown</li>
           <li>Weekly Members Only Email</li>
         </ul>
-        <a href="{% url 'checkout'%}?plan=gold"><button type="button" class="btn btn-lg btn-block btn-primary">Get started</button></a>
+        <a href="{% url 'checkout'%}?plan=gold"><button type="button" class="btn btn-lg btn-block btn-primary">Pay with Visa/ Mastercard</button></a><br>
+        <a href="{% url 'checkout_sepa'%}?plan=gold"><button type="button" class="btn btn-lg btn-block btn-secondary">Pay with SEPA</button></a>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -50,7 +53,8 @@
           <li>Scientific Studies Breakdown</li>
           <li>Weekly Members Only Email</li>
         </ul>
-        <a href="{% url 'checkout'%}?plan=gold yearly"><button type="button" class="btn btn-lg btn-block btn-primary">Get started</button></a>
+        <a href="{% url 'checkout'%}?plan=gold yearly"><button type="button" class="btn btn-lg btn-block btn-primary">Pay with Visa/ Mastercard</button></a><br>
+        <a href="{% url 'checkout_sepa'%}?plan=gold yearly"><button type="button" class="btn btn-lg btn-block btn-secondary">Pay with SEPA</button></a>
       </div>
     </div>
   </div>
