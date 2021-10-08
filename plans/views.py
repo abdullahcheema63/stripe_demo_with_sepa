@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CustomSignupForm
 from django.urls import reverse_lazy
@@ -165,7 +167,14 @@ def checkout_sepa(request):
 
         else:
             subscription = stripe.Subscription.create(customer=stripe_customer_sepa.id, items=[{'plan':plan}])
-        
+        if subscription is not None:
+            start_date = datetime.fromtimestamp(subscription["current_period_start"])
+            end_date = datetime.fromtimestamp(subscription["current_period_end"])
+            print(start_date)
+            print(end_date)
+
+
+
         customer = Customer()
         customer.user = request.user
         customer.stripeid = stripe_customer_sepa.id
